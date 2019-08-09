@@ -1,9 +1,9 @@
 <template>
   <div class="recommend" ref="recommend">
-    <scroll ref="scroll" class="recommend-content" v-slot:scrollSlot :data="discList">
+    <scroll ref="scroll" class="recommend-content" v-slot :data="discList">
       <div>
         <div class="slider-warpper" v-if="recommends.length" ref="sliderWrapper">
-          <slider v-slot:sliderSlot>
+          <slider v-slot>
             <div v-for="item in recommends">
               <a :href="item.linkUrl">
                 <img :src="item.picUrl" @load="loadImage" class="needsclick">
@@ -39,8 +39,10 @@ import Scroll from "../../base/scroll/scroll"
 import Slider from "../../base/slider/slider";
 import { getRecommend, getDiscList } from "../../api/recommend";
 import { ERR_OK } from "../../api/config";
+import {playlistMixin} from '../../common/js/mixin';
 
 export default {
+  mixins: [playlistMixin],
   data() {
     return {
       recommends: [],
@@ -57,6 +59,11 @@ export default {
     Loading
   },
   methods: {
+    handlePlaylist(playlist) {
+      const bottom = playlist.length > 0 ? '60px' : ''
+      this.$refs.recommend.style.bottom = bottom
+      this.$refs.scroll.refresh()
+    },
     loadImage() {
       if (!this.checkLoaded) {
         this.checkLoaded = true

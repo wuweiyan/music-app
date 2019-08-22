@@ -1,4 +1,5 @@
 <template>
+<!-- 轮播图 -->
   <div class="slider" ref="slider">
     <div class="slider-group" ref="sliderGroup">
       <slot>

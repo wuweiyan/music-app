@@ -1,4 +1,5 @@
 <template>
+<!-- 歌手列表 -->
   <div class="song-list">
     <ul>
       <li v-for="(song, index) in songs" class="item" @click="selectItem(song, index)">

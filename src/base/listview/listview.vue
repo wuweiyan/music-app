@@ -1,4 +1,5 @@
 <template>
+<!-- 歌手列表 -->
   <scroll @scroll="scroll"
           :listen-scroll="listenScroll"
           :probe-type="probeType"
@@ -16,6 +17,7 @@
         </uL>
       </li>
     </ul>
+    <!-- 侧边栏 -->
     <div class="list-shortcut" @touchstart.stop.prevent="onShortcutTouchStart" @touchmove.stop.prevent="onShortcutTouchMove"
          @touchend.stop>
       <ul>
@@ -110,6 +112,7 @@
           this.listHeight.push(height)
         }
       },
+      // 侧边栏滚动
       _scrollTo(index) {
         if (!index && index !== 0) {
           return
